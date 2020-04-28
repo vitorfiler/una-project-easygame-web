@@ -4,6 +4,7 @@ import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatIconModule, 
 
 import { LoginComponent } from '../../main/login/login.component';
 import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import { HttpClient } from '@angular/common/http';
         MatFormFieldModule,
         MatIconModule,
         MatInputModule,
-        HttpClient
+        HttpClient,
+        FormsModule
     ]
 })
 export class LoginModule
