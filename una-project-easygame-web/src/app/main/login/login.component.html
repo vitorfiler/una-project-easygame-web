@@ -29,7 +29,10 @@
             </div>
             <div class="container-login100-form-btn">
               <div>
-                <button class="btn btn-primary epaNenem" (click)="login()">Login</button>
+                <button [routerLink]="['/home']" mat-raised-button class="submit-button btn btn-primary" aria-label="LOG IN"
+                        (click)="login(user.email, user.password)">
+                    LOGIN
+                </button>
                 <!-- class="login100-form-btn"> -->
               </div>
             </div>
