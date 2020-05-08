@@ -30,26 +30,26 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  login(username: String, senha: String): Promise<any> {
+  async login(username: String, senha: String): Promise<any> {
     const body = { username: username, password: senha };
 
-    let promisse = this.http
-      .post(`${AppConst.URL_API}`, body, { observe: "response" })
-      .toPromise();
+    let promisse = this.http.post(`${AppConst.URL_API}`, body, { observe: "response" }).toPromise();
 
-    return promisse
-      .then((response) => {
-        localStorage.setItem("currentUser", JSON.stringify(this.user)),
-          localStorage.setItem("token", response.body["access_token"]),
-          this.router.navigate(["home"]);
-      })
-      .catch(() => (this.falhaLogin = true));
+    try {
+      const response = await promisse;
+      localStorage.setItem("currentUser", JSON.stringify(this.user)),
+        localStorage.setItem("token", response.body["access_token"]),
+        this.router.navigate(["home"]);
+    }
+    catch (e) {
+      return (this.falhaLogin = true);
+    }
   }
 
   ngOnInit(): void {
-    this.loginForm = this._formBuilder.group({
-      email: ["", [Validators.required]],
-      password: ["", Validators.required],
-    });
+    // this.loginForm = this._formBuilder.group({
+    //   email: ["", [Validators.required]],
+    //   password: ["", Validators.required],
+    // });
   }
 }
