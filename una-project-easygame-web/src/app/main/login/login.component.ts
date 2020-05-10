@@ -21,29 +21,32 @@ export class LoginComponent implements OnInit {
    * @param {FuseConfigService} _fuseConfigService
    * @param {FormBuilder} _formBuilder
    */
-  private http: HttpClient;
-  private _formBuilder: FormBuilder;
-  private router: Router;
-  constructor() {}
+  
+  
+  
+  constructor(private http: HttpClient,
+              private router: Router) {}
 
   get f() {
     return this.loginForm.controls;
   }
 
-  async login(username: String, senha: String): Promise<any> {
-    const body = { username: username, password: senha };
+  login(username: String, password: String): Promise<any> {
+    const body = 
+        {'username': username, 'password': password};
 
-    let promisse = this.http.post(`${AppConst.URL_API}`, body, { observe: "response" }).toPromise();
+    let promisse = this.http.post(`${AppConst.URL_API}`, body, { observe: "response" })
+      .toPromise();
 
-    try {
-      const response = await promisse;
-      localStorage.setItem("currentUser", JSON.stringify(this.user)),
-        localStorage.setItem("token", response.body["access_token"]),
-        this.router.navigate(["home"]);
-    }
-    catch (e) {
-      return (this.falhaLogin = true);
-    }
+    return promisse
+        .then(response => {
+            localStorage.setItem('currentUser', JSON.stringify(this.user)),
+                localStorage.setItem('token', response.body['access_token']),
+                this.router.navigate(['ranking']);
+    })
+    .catch(
+        () => this.falhaLogin = true
+    );
   }
 
   ngOnInit(): void {
