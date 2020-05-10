@@ -17,20 +17,20 @@
               easyGame, brincando de inovar!
             </h6>
             <div class="wrap-input100">
-              <input class="input100" type="text" name="email" />
+              <input class="input100" type="text" name="email" [(ngModel)]="user.userName"/>
               <span class="focus-input100" data-placeholder="Usuário"></span>
             </div>
             <div
               class="wrap-input100 validate-input"
               data-validate="Enter password"
             >
-              <input class="input100" type="password" name="password" />
+              <input class="input100" type="password" name="password" [(ngModel)]="user.password"/>
               <span class="focus-input100" data-placeholder="Password"></span>
             </div>
             <div class="container-login100-form-btn">
               <div>
-                <button [routerLink]="['/home']" mat-raised-button class="submit-button btn btn-primary" aria-label="LOG IN"
-                        (click)="login(user.email, user.password)">
+                <button mat-raised-button class="submit-button btn btn-primary" aria-label="LOG IN"
+                        (click)="login(user.userName, user.password)">
                     LOGIN
                 </button>
                 <!-- class="login100-form-btn"> -->
