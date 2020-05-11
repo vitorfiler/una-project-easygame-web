@@ -11,6 +11,12 @@ export class MenuComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
 
   fillerNav = Array.from({length: 4}, (_, i) => `Nav Item ${i + 1}`);
+  showInNav: any = [
+    {nameComponent: "Ranking"},
+    {nameComponent: "Tarefas"},
+    {nameComponent: "Metas"},
+    {nameComponent: "Recompensas"}
+  ]
 
   private _mobileQueryListener: () => void;
 
