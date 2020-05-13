@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AppConst } from "src/app/_const/app.const";
+import { EventEmitterService } from 'src/app/arquitetura/event/event.service';
 
 @Component({
   selector: "login",
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
   get f() {
     return this.loginForm.controls;
   }
-
+  
   login(username: String, password: String): Promise<any> {
     const body = 
         {'username': username, 'password': password};
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
     return promisse
         .then(response => {
             localStorage.setItem('currentUser', JSON.stringify(this.user)),
+            EventEmitterService.get('login').emit(true);
                 localStorage.setItem('token', response.body['access_token']),
                 this.router.navigate(['ranking']);
     })

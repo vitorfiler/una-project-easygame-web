@@ -1,2 +1,5 @@
 <router-outlet></router-outlet>
-<app-menu></app-menu>
+<ng-container *ngIf="showMenu">
+    <app-menu ></app-menu>
+</ng-container>
+
