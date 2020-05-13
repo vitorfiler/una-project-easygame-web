@@ -1,13 +1,12 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
     <mat-toolbar class="example-toolbar toolbar-config">
-      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     
       <button mat-button [matMenuTriggerFor]="userMenu" class="user-button label-user">
 
         <img class="avatar mr-0 mr-sm-16" 
               src="assets/images/icons/IconsMOD/user.png"
               style="max-width: 40px;">
-            <span class="label-user">Usuário</span>
+            <span class="label-user">{{username.userName}}</span>
             <mat-icon>keyboard_arrow_down</mat-icon>
 
     </button>
@@ -33,9 +32,24 @@
     <mat-sidenav-container class="example-sidenav-container "
                            [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
       <mat-sidenav class="left-menu" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" opened>
         <mat-nav-list >
-          <a mat-list-item routerLink="." *ngFor="let item of showInNav">{{item.nameComponent}}</a>
+          <a mat-list-item routerLink="/ranking">
+          <img class="avatar mr-0 mr-sm-16" 
+              src="assets/images/icons/rank.png"
+              style="max-width: 40px;"><span style="padding-left: 10px;">Ranking</span></a>
+          <a mat-list-item routerLink="/tarefas">
+            <img class="avatar mr-0 mr-sm-16" 
+                src="assets/images/icons/list.png"
+                style="max-width: 40px;"><span style="padding-left: 10px;">Tarefas</span></a>
+          <a mat-list-item routerLink="/metas">
+            <img class="avatar mr-0 mr-sm-16" 
+                src="assets/images/icons/mission.png"
+                style="max-width: 40px;"><span style="padding-left: 10px;">Metas</span></a>
+          <a mat-list-item routerLink="/recompensas">
+            <img class="avatar mr-0 mr-sm-16" 
+                src="assets/images/icons/gift.png"
+                style="max-width: 40px;"><span style="padding-left: 10px;">Recompensas</span></a>
         </mat-nav-list>
       </mat-sidenav>
     </mat-sidenav-container>
@@ -48,7 +62,3 @@
     </mat-sidenav-container> -->
   </div> 
   
-  
-  <!-- Copyright 2019 Google LLC. All Rights Reserved.
-      Use of this source code is governed by an MIT-style license that
-      can be found in the LICENSE file at http://angular.io/license -->
