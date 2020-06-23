@@ -15,6 +15,8 @@ import { RankingComponent } from './main/ranking/ranking.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { TarefasComponent } from './main/tarefas/tarefas.component';
 import { MenuComponent } from './layout/menu/menu.component';
+import { MetasComponent } from './main/metas/metas.component';
+import { RecompensasComponent } from './main/recompensas/recompensas.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { MenuComponent } from './layout/menu/menu.component';
     MenuComponent,
     RankingComponent,
     TarefasComponent,
+    MetasComponent,
+    RecompensasComponent,
   ],
   imports: [
     BrowserModule,
